@@ -14,7 +14,7 @@ This data should be current as of each page load, but unless you’ve got some t
 
 Feel free to pull in any libraries or extra resources you feel are necessary, but be ready to defend why.  Also, definitely go ahead and use built-in functionality like data structures and sorting algorithms rather than implementing your own, but be sure to have an idea of what’s going on under the hood.  Using StackOverflow/Googling around is fine, but give attribution in the form of a comment if a section of code is from or inspired by something you have not written. 
 
-The easiest way to get the challenge is to clone the git repo (if you need help getting git up and running on your system, check out this slightly profane tutorial):
+The easiest way to get the challenge is to clone the git repo (if you need help getting git up and running on your system, check out [this](http://rogerdudler.github.io/git-guide/) slightly profane tutorial):
 
 ```git clone https://github.com/TicketLeap/CodingChallenge.git```
 
