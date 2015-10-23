@@ -1,6 +1,6 @@
 #The Ticketleap Coding Challenge
 
-In the Philadelphia area, many people commute to work using the SEPTA Regional Rail system.  You have been tasked with making a very simple application that allows riders to see what trains they can catch, and whether they’re on time.  To do this, you will take advantage of SEPTA’s train status API:
+**In the Philadelphia area,** many people commute to work using the SEPTA Regional Rail system.  You have been tasked with making a very simple application that allows riders to see what trains they can catch, and whether they’re on time.  To do this, you will take advantage of SEPTA’s train status API:
 
 http://www3.septa.org/hackathon/NextToArrive/?req1=Swarthmore&req2=30th+Street+Station
 
@@ -9,6 +9,8 @@ http://www3.septa.org/hackathon/NextToArrive/?req1=Swarthmore&req2=30th+Street+S
 You’ve been provided a simple one-page Django that renders the shell of the page.  Your job is to add a table to the page which displays the trains returned by the API call, their scheduled departure time, arrival time, and whether they’re running late or on time.   
 
 This data should be current as of each page load, but unless you’ve got some time leftover don’t worry about trying to make the updates live.  There are many ways to accomplish this task on both the server and the client side, so go with what you’re familiar with.  
+
+** The sample code we've given you is in Python/Django, but don't let that limit you!** If you can get a Node.js stack up and running in no time flat, feel free to chuck what we've given you.  Want to use the part of the app that renders the main page and do the rest in JavaScript?  That's fine too!  At the end of the day this is about seeing how you solve open-ended problems, so even if you can't get it 100% of the way there we still want to see what you've done. 
 
 Feel free to pull in any libraries or extra resources you feel are necessary, but be ready to defend why.  Also, definitely go ahead and use built-in functionality like data structures and sorting algorithms rather than implementing your own, but be sure to have an idea of what’s going on under the hood.  Using StackOverflow/Googling around is fine, but give attribution in the form of a comment if a section of code is from or inspired by something you have not written. 
 
