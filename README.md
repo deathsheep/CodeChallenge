@@ -24,6 +24,8 @@ Once you get the app unpacked and ready to go, start the server by running the s
 
 (It will prompt you for a password).  This installs the tools pip (python package installer) and a virtual environment tool on your system.  It runs a variety of commands to configure Django from scratch, but feel free to look at it before running to get a better sense of what it does. 
 
+**If you do run into trouble during installation, let us know!**  The setup shouldn't be the part you're spending your time on.  If it takes more than a few minutes to get set up feel free to reach out to us and we'll see what we can do to get you un-stuck. 
+
 Navigating a browser to localhost:8000 will show you how the site looks to get started, and has a helpful hint or two.  If you run into problems with the setup, let us know.  
 
 Once you are done, please email us a screenshot of you solution and a link to a git repository (or some other code-sharing link).  
