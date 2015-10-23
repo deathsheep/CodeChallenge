@@ -1,10 +1,10 @@
 #!/bin/bash
-#!venv/bin python
+sudo rm -rf venv;
 sudo easy_install pip;
-sudo chown -R $USER:$USER .
+sudo pip install virtualenv;
+sudo chown -R $USER .
+virtualenv --no-site-packages venv;
 source ./venv/bin/activate;
-which pip
-which python
 pip install -r requirements.txt;
 cd src/septa_challenge;
 yes "yes" | python manage.py collectstatic;
