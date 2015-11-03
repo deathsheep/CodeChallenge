@@ -3,7 +3,75 @@
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script>
+			window.onload = function(){
+			
+			   stations = {};
+				
+				sampleResult = JSON.parse('[{"orig_train": "4356", "orig_line": "Airport", "orig_departure_time": " 1:42PM", "orig_arrival_time": " 2:00PM", "orig_delay": "On time", "term_train": "537", "term_line": "Paoli/Thorndale", "term_depart_time": " 2:19PM", "term_arrival_time": " 2:36PM", "Connection": "30th Street Station", "term_delay": "2 mins", "isdirect": "false"}]');
+			 
+				//build the request url
+				function buildUrl(from, to){
+					console.log('to: '+to+'  from: '+from);
+					console.log('to: '+nameClean(to)+'  from: '+nameClean(from));
+					var url = 'http://www3.septa.org/hackathon/NextToArrive/?req1=';
+					url += nameClean(from)+'&req2='+nameClean(to);
+					return url;
+				}
+				
+				//clean the station name for use in a url
+				function nameClean(name){
+					name = name.replace(/ & /g, '-');
+					name = name.replace(/ /g, '+');
+					return name;
+				}
+				
+				//quick test
+				console.log(buildUrl('30th street station', 'airport c & d'));
+				
+				
+				//get the station names
+				//won't work while till i load the raw json
+				/*
+				$.each(stations, function(i, props){
+					$('#from').append('<option value="' + props.name + '">' + props.name + '</option>);
+				});
+				*/
+				
+				
+				//fill in the trains table with data
+				function renderTable(json){
+					$('#arrivals').html('<tr><td>Train</td><td>Line</td><td>Departs</td><td>Arrives</td><td>Status</td>');
+					$.each(json, function(i, props){
+						string = '<tr';
+						if(props.orig_delay != 'On time') string += 'style="background-color: lightpink;"';
+						string += '><td>' + props.orig_train + '</td><td>'+ orig_line +'</td><td>' + orig_departure_time + '</td><td>' + orig_arrival_time + '</td><td>' + orig_delay + '</td>';
+						$('#arrivals').append(string);
+					});
+				}
+				
+				$('#go').click(function(){
+					//clear the errors
+					$('#errors').html('');
+					
+					if($('#from').val() != ''){
+						if($('#to').val() != ''){
+							//run a query based on the selected 
+							$.getJSON(buildUrl($('#from').val(), $('#to').val()), function (result){
+								
+								renderTable(result);
+							});
+						}
+						else $('#errors').append('<br> you must have an Ending Station');
+					}
+					else $('#errors').append('<br> you must have a Starting Station');
+					
+				});
+				
+			};
+		</script>
         <style>
 
 body { 
@@ -89,11 +157,22 @@ body {
                 Train Status
             </h2>
             <div class="panel">
+				<div id='errors' style='color: red;'></div>
                 <form>
-                    <label> Starting Station </label> <select> </select>
-                    <label> Ending Station </label> <select> </select>
-                    <button> Go! </button>
+                    <label> Starting Station </label> <select id='from'> </select>
+                    <label> Ending Station </label> <select id='to'> </select>
+                    <button id='go'> Go! </button>
                 </form>
+            </div>
+            
+            <div id="display">
+			<h2>Next Trains:</h2>
+			<table>
+				<tbody id='arrivals'>
+				
+				</tbody>
+			</table>
+                
             </div>
             <p> <span class="lead"> The SEPTA Tracker 9000 </span> is really cool.  But right now it doesn't do a whole lot. How you do it is up to you, but I should see a table of trains and their departure, arrival times, and on-time status here.  <b> Do not </b> spend more than an hour or two making this happen, and get as far as you can.  It would be cool if the app updated automatically with new information, say, every thirty seconds, but only tackle that if you have extra time.  
             If Django/Python is your thing, you should find this skeleton helpful.  If JavaScript is more your thing, you might find the contents of ../fixtures/ helpful in getting your station options above. </p>

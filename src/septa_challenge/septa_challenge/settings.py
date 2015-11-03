@@ -25,7 +25,7 @@ SECRET_KEY = '2*a2wi4^b#j^vy@i)2kj4o&mx8977oxo9qv=lck8i%o+3j-!rg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www3.septa.org']
 
 
 # Application definition
